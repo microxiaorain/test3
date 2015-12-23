@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: --><!--
+Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v1.0 which accompanies this distribution,
+and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+    <groupId>org.opendaylight.controller</groupId>
+    <artifactId>config-parent</artifactId>
+    <version>0.3.2-Lithium-SR2</version>
+    <relativePath/>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.xiaorain.odllearn</groupId>
+  <artifactId>test3-impl</artifactId>
+  <version>1.0.0</version>
+  <packaging>bundle</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>test3-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- Testing Dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    
+        <dependency>
+            <groupId>org.opendaylight.controller</groupId>
+            <artifactId>web</artifactId>
+            <version>0.5.2-Lithium-SR2</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.opendaylight.controller</groupId>
+            <artifactId>sal-core-api</artifactId>
+        </dependency>
+        
+       <dependency>
+            <groupId>org.opendaylight.yangtools</groupId>
+            <artifactId>yang-data-impl</artifactId>
+        </dependency>
+    
+<!--     <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>6.0.44</version>
+        <scope>provided</scope>
+    </dependency> -->
+<!--     <dependency>
+	    <groupId>org.apache.geronimo.specs</groupId>
+	    <artifactId>geronimo-servlet_2.5_spec</artifactId>
+	    <version>1.2</version>
+         <scope>provided</scope>
+    </dependency> -->
+        
+  </dependencies>
+  <build>
+          <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Import-Package>
+                            javax.annotation,
+                            javax.naming,
+                            javax.servlet,
+                            javax.servlet.annotation,
+                            javax.servlet.http,
+                            javax.servlet.jsp,
+                            javax.servlet.jsp.el,
+                            javax.servlet.jsp.jstl.core,
+                            javax.servlet.jsp.jstl.fmt,
+                            javax.servlet.jsp.jstl.tlv,
+                            javax.servlet.jsp.tagext,
+                            javax.servlet.resources,
+                            javax.xml.parsers,
+                            javax.xml.transform,
+                            org.apache.commons.logging,
+                            org.apache.taglibs.standard.functions,
+                            org.apache.taglibs.standard.resources,
+                            org.apache.taglibs.standard.tag.common.core,
+                            org.apache.taglibs.standard.tag.common.fmt,
+                            org.apache.taglibs.standard.tag.rt.core,
+                            org.apache.taglibs.standard.tag.rt.fmt,
+                            org.apache.taglibs.standard.tei,
+                            org.apache.taglibs.standard.tlv,
+                            com.fasterxml.jackson.core,
+                            com.fasterxml.jackson.databind,
+                            com.fasterxml.jackson.annotation,
+                            org.osgi.framework,
+                            org.slf4j,
+                            org.springframework.beans,
+                            org.springframework.beans.factory.xml,
+                            org.springframework.context.config,
+                            org.springframework.core,
+                            org.springframework.stereotype,
+                            org.springframework.ui,
+                            org.springframework.web,
+                            org.springframework.web.bind.annotation,
+                            org.springframework.web.servlet,
+                            org.springframework.web.servlet.config,
+                            org.springframework.web.servlet.view,
+                            org.springframework.web.servlet.view.json,
+                            org.springframework.web.filter,
+                            org.springframework.web.context,
+                            org.springframework.web.multipart.commons,
+                            org.springframework.util,
+                            *
+                        </Import-Package>
+                        <Web-ContextPath>/testweb</Web-ContextPath>
+                        <Embed-Dependency>httpclient,httpcore</Embed-Dependency>
+                    </instructions>
+                    <manifestLocation>${project.basedir}/src/main/resources/META-INF</manifestLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+  </build>
+
+</project>

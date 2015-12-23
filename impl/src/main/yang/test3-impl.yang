@@ -1,0 +1,45 @@
+module test3-impl {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:test3:impl";
+    prefix "test3-impl";
+
+    import config { prefix config; revision-date 2013-04-05; }
+    import opendaylight-md-sal-binding { prefix md-sal-binding; revision-date 2013-10-28;}
+    import opendaylight-md-sal-dom { prefix md-sal-dom; revision-date 2013-10-28;}
+    
+    description
+        "Service definition for test3 project";
+
+    revision "2014-12-10" {
+        description
+            "Initial revision";
+    }
+
+    identity test3 {
+        base config:module-type;
+        config:java-name-prefix Test3;
+    }
+
+    augment "/config:modules/config:module/config:configuration" {
+        case test3 {
+            when "/config:modules/config:module/config:type = 'test3'";
+            container broker {
+                uses config:service-ref {
+                    refine type {
+                        mandatory true;
+                        config:required-identity md-sal-binding:binding-broker-osgi-registry;
+                    }
+                }
+            }
+            
+            container dom-data-broker {
+               uses config:service-ref {
+                   refine type {
+                       mandatory true;
+                       config:required-identity md-sal-dom:dom-async-data-broker;
+                   }
+               }
+           }
+        }
+    }
+}
